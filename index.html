@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda en Línea</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; display: flex; height: 100vh; overflow: hidden; }
+        
+        /* BARRA LATERAL VERTICAL ESTILO WHATSAPP WEB */
+        .sidebar-left { width: 65px; background-color: #2c3e50; display: flex; flex-direction: column; align-items: center; padding-top: 20px; gap: 25px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .sidebar-icon { color: #cbd5e1; text-decoration: none; font-size: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 8px; transition: 0.3s; position: relative; }
+        .sidebar-icon:hover { background-color: #34495e; color: #2ecc71; }
+        .icon-label { font-size: 9px; margin-top: 2px; font-weight: bold; text-align: center; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* CONTENEDOR PRINCIPAL DERECHO */
+        .main-content { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow-y: auto; }
+        .search-container { padding: 15px; background: #2c3e50; border-bottom: 1px solid #e0e0e0; text-align: center; }
+        .search-bar { width: 100%; max-width: 600px; padding: 12px; border-radius: 8px; border: none; box-sizing: border-box; font-size: 16px; background-color: #f8fafc; }
+        
+        /* SALUDO DE BIENVENIDA PERSONALIZADO */
+        .saludo-cliente { color: white; margin: 0 0 10px 0; font-weight: bold; font-size: 16px; text-align: center; }
+        
+        /* CUADRÍCULA DE PRODUCTOS */
+        .container { padding: 20px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding-bottom: 80px; }
+        .product-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+        .product-card img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; background-color: #eaeaea; }
+        .product-card h3 { margin: 15px 0 5px 0; font-size: 18px; color: #2c3e50; }
+        .product-desc { font-size: 14px; color: #7f8c8d; margin: 5px 0 10px 0; line-height: 1.4; text-align: left; }
+        .product-price { color: #e74c3c; font-weight: bold; font-size: 20px; margin: 8px 0; text-align: left; }
+        
+        .btn-add { background: #2ecc71; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 15px; transition: 0.3s; }
+        .btn-add:hover { background-color: #27ae60; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; text-align: center; font-size: 30px; box-shadow: 2px 2px 5px rgba(0,0,0,0.3); z-index: 1000; line-height: 60px; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA LATERAL IZQUIERDA VERTICAL -->
+    <nav class="sidebar-left">
+        <a href="index.html" class="sidebar-icon" title="Inicio" style="color: #2ecc71;">
+            🏠<span class="icon-label">Inicio</span>
+        </a>
+        <a href="#" class="sidebar-icon" title="Carrito de Compras" onclick="verificarSesion(event)">
+            🛒<span class="icon-label">Carrito</span>
+        </a>
+        <a href="seguimiento.html" class="sidebar-icon" title="Mis Pedidos">
+            📦<span class="icon-label">Pedidos</span>
+        </a>
+        <a href="login.html" class="sidebar-icon" id="btnPerfil" title="Mi Cuenta">
+            👤<span class="icon-label" id="lblPerfil">Perfil</span>
+        </a>
+    </nav>
+
+    <!-- ÁREA DE CONTENIDO DERECHO -->
+    <div class="main-content">
+        <div class="search-container" id="searchBox">
+            <input type="text" class="search-bar" placeholder="🔍 ¿Qué estás buscando hoy?...">
+        </div>
+
+        <div class="container">
+            <main class="products-grid">
+                
+                <!-- PRODUCTO 1 -->
+                <div class="product-card">
+                    <img src="https://unsplash.com" alt="Producto">
+                    <div>
+                        <h3>Producto Ejemplo 1</h3>
+                        <p class="product-desc">Esta es la descripción profesional del producto. Aquí puedes explicar los tamaños, colores disponibles y materiales del artículo.</p>
+                        <p class="product-price">Gs. 15.000</p>
+                    </div>
+                    <button class="btn-add" onclick="verificarSesion(event)">Comprar / Finalizar Pedido</button>
+                </div>
+                
+                <!-- PRODUCTO 2 -->
+                <div class="product-card">
+                    <img src="https://unsplash.com" alt="Producto">
+                    <div>
+                        <h3>Producto Ejemplo 2</h3>
+                        <p class="product-desc">Descripción elegante del segundo artículo. Ideal para capturar la atención del cliente y detallar los beneficios de tu mercadería.</p>
+                        <p class="product-price">Gs. 45.000</p>
+                    </div>
+                    <button class="btn-add" onclick="verificarSesion(event)">Comprar / Finalizar Pedido</button>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <a href="https://wa.me" class="whatsapp-btn" target="_blank">💬</a>
+
+    <!-- LÓGICA DE VALIDACIÓN -->
+    <script>
+        function verificarSesion(event) {
+            event.preventDefault();
+            var activo = localStorage.getItem("usuarioLogueado");
+            if (activo === "true") {
+                window.location.href = "pago.html";
+            } else {
+                alert("🔒 Para confirmar tu pedido e ingresar al carrito debes iniciar sesión primero. ¡Es rápido y seguro!");
+                window.location.href = "login.html";
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            var activo = localStorage.getItem("usuarioLogueado");
+            var nombre = localStorage.getItem("nombreCliente");
+            if (activo === "true" && nombre) {
+                var box = document.getElementById('searchBox');
+                var div = document.createElement('div');
+                div.className = 'saludo-cliente';
+                div.innerHTML = '👋 ¡Hola, <strong>' + nombre + '</strong>! Bienvenido de vuelta a la tienda.';
+                box.insertBefore(div, box.firstChild);
+
+                var lbl = document.getElementById('lblPerfil');
+                if (lbl) {
+                    var corto = nombre.split(' ');
+                    lbl.textContent = corto[0];
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
