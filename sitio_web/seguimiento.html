@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Pedido</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 20px; }
+        .tracking-container { max-width: 650px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        h2 { color: #2c3e50; margin-bottom: 5px; }
+        .order-id { color: #7f8c8d; font-size: 16px; margin-bottom: 25px; }
+        
+        /* Barra de Progreso Visual */
+        .progress-track { display: flex; justify-content: space-between; position: relative; margin: 30px 0 40px 0; }
+        .progress-track::before { content: ''; position: absolute; top: 15px; left: 0; right: 0; height: 4px; background: #cbd5e1; z-index: 1; }
+        .step { position: relative; z-index: 2; background: #cbd5e1; color: white; width: 34px; height: 34px; line-height: 34px; border-radius: 50%; font-weight: bold; margin: 0 auto; }
+        .step.active { background: #2ecc71; box-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .step-label { font-size: 13px; color: #7f8c8d; margin-top: 8px; font-weight: bold; display: block; }
+
+        /* Contenedor de Botones de Control del Cliente */
+        .actions-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 30px; border-top: 1px solid #e0e0e0; padding-top: 25px; }
+        .btn-action { padding: 14px; border-radius: 6px; font-size: 16px; font-weight: bold; border: none; cursor: pointer; transition: 0.3s; width: 100%; color: white; }
+        
+        /* Botón 1: Marcar Entregado (Verde) */
+        .btn-delivered { background-color: #2ecc71; }
+        .btn-delivered:hover { background-color: #27ae60; }
+        
+        /* Botón 2: Modificar Día de Entrega (Naranja) */
+        .btn-reschedule { background-color: #f39c12; }
+        .btn-reschedule:hover { background-color: #d35400; }
+
+        /* Botón 3: Ver Comprobante Enviado (Gris) */
+        .btn-view { background-color: #7f8c8d; }
+        .btn-view:hover { background-color: #6c7a89; }
+    </style>
+</head>
+<body>
+
+    <div class="tracking-container">
+        <h2>📦 Estado de tu Pedido</h2>
+        <div class="order-id">Pedido Nro: #00124</div>
+
+        <!-- Línea de tiempo visual -->
+        <div class="progress-track">
+            <div>
+                <div class="step active">1</div>
+                <span class="step-label">Recibido</span>
+            </div>
+            <div>
+                <div class="step active">2</div>
+                <span class="step-label">Validando</span>
+            </div>
+            <div>
+                <div class="step">3</div>
+                <span class="step-label">En Camino</span>
+            </div>
+            <div>
+                <div class="step">4</div>
+                <span class="step-label">Entregado</span>
+            </div>
+        </div>
+
+        <p style="font-size: 16px; color: #34495e; background: #f8fafc; padding: 15px; border-radius: 6px;">
+            <strong>Nota actual:</strong> Tu comprobante fue enviado con éxito. Estamos verificando el depósito en nuestro banco.
+        </p>
+
+        <!-- Los 3 Botones Solicitados -->
+        <div class="actions-container">
+            <button class="btn-action btn-delivered" onclick="alert('¡Gracias por confirmar tu entrega! Tu pedido ha sido finalizado con éxito.')">
+                ✅ Ya recibí mi pedido (Marcar como Entregado)
+            </button>
+            
+            <button class="btn-action btn-reschedule" onclick="let nuevaFecha = prompt('Introduce el nuevo día y horario preferido para tu entrega:'); if(nuevaFecha) alert('Solicitud de cambio enviada para el día: ' + nuevaFecha)">
+                📅 Modificar día o fecha de entrega
+            </button>
+            
+            <button class="btn-action btn-view" onclick="alert('Abriendo el visor del comprobante que subiste...')">
+                📄 Ver mi comprobante cargado
+            </button>
+        </div>
+
+        <p style="margin-top: 25px;"><a href="index.html" style="color: #2c3e50; font-weight: bold; text-decoration: none;">← Volver a la Tienda</a></p>
+    </div>
+
+</body>
+</html>
