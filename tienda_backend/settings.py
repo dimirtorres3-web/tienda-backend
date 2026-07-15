@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-tienda-secreta-paraguay-vireh-2026'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['://onrender.com', 'starlit-nasturtium-d2a788.netlify.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
