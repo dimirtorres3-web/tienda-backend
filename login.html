@@ -26,15 +26,15 @@
     <div class="login-card">
         <h2>Iniciar Sesión</h2>
         
-        <!-- Formulario que va a usar el sistema de Python -->
-        <form action="/accounts/login/" method="POST">
+        <!-- Formulario por Correo -->
+        <form action="verificacion.html" onsubmit="localStorage.setItem('usuarioLogueado', 'true'); localStorage.setItem('nombreCliente', 'Cliente Nuevo');">
             <div class="form-group">
                 <label>Correo Electrónico</label>
-                <input type="email" name="login" placeholder="ejemplo@correo.com" required>
+                <input type="email" placeholder="ejemplo@correo.com" required>
             </div>
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" name="password" placeholder="Tu contraseña" required>
+                <input type="password" placeholder="Tu contraseña" required>
             </div>
             <button type="submit" class="btn-login">Ingresar a mi Cuenta</button>
         </form>
@@ -43,13 +43,11 @@
             <span>O también</span>
         </div>
 
-        <!-- ENLACE REAL AL SERVIDOR DE GOOGLE DE PYTHON -->
-        <a href="/accounts/google/login/?next=/sitio_web/index.html" style="text-decoration: none; width: 100%;">
-            <button class="btn-google">
-                <img src="https://gstatic.com" alt="Google Logo">
-                Continuar con Google
-            </button>
-        </a>
+        <!-- BOTÓN DE GOOGLE CONECTADO DIRECTAMENTE A TU SERVIDOR EN LA NUBE -->
+        <button class="btn-google" onclick="window.location.href='https://onrender.com'">
+            <img src="https://gstatic.com" alt="Google Logo">
+            Continuar con Google
+        </button>
     </div>
 
 </body>
